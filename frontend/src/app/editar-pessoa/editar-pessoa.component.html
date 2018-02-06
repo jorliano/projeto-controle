@@ -4,32 +4,32 @@
      Editar dados de Pessoa
     </h3>
   </div>
-  <form #form="ngForm" (ngSubmit)="updateUser(form)" novalidate>
+  <form #form="ngForm" (ngSubmit)="updatepessoa(form)" novalidate>
     <div class="row">
       <div class="form-group col-6">
         <label for="nome">Nome</label>
-        <input type="text" name="nome" class="form-control is-valid " id="nome" [(ngModel)]="user.nome"
+        <input type="text" name="nome" class="form-control is-valid " id="nome" [(ngModel)]="pessoa.nome"
         required #nome="ngModel" autofocus
         [ngClass]="{ 'is-invalid': nome.invalid && nome.dirty }">
         <div class="invalid-feedback">Campo requirido</div>
       </div>
       <div class="form-group col-6">
         <label for="cpf">CPF</label>
-        <input type="text" name="cpf" class="form-control is-valid " id="cpf" [(ngModel)]="user.cpf"
+        <input type="text" name="cpf" class="form-control is-valid " id="cpf" [(ngModel)]="pessoa.cpf"
         required #cpf="ngModel" mask='999.999.999-99'
         [ngClass]="{ 'is-invalid': cpf.invalid && cpf.dirty }">
         <div class="invalid-feedback">Campo requirido</div>
       </div>
       <div class="form-group col-6">
         <label for="email">E-mail</label>
-        <input type="email" name="email" class="form-control is-valid " id="email" [(ngModel)]="user.email"
+        <input type="email" name="email" class="form-control is-valid " id="email" [(ngModel)]="pessoa.email"
         required #email="ngModel"
         [ngClass]="{ 'is-invalid': email.invalid && email.dirty }">
         <div class="invalid-feedback">Campo requirido</div>
       </div>
       <div class="form-group col-6">
         <label for="data_nascimento">Data de nascimento</label>
-        <input type="date" name="data_nascimento" class="form-control is-valid " id="data_nascimento" [(ngModel)]="user.dataNascimento"
+        <input type="date" name="data_nascimento" class="form-control is-valid " id="data_nascimento" [(ngModel)]="pessoa.dataNascimento"
         required #data_nascimento="ngModel"
         [ngClass]="{ 'is-invalid': data_nascimento.invalid && data_nascimento.dirty }">
         <div class="invalid-feedback">Campo requirido</div>
@@ -61,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let telefone of user.telefones">
+          <tr *ngFor = "let telefone of pessoa.telefones">
             <th scope="row">{{telefone.id}}</th>
             <td>{{telefone.ddd}}</td>
             <td>{{telefone.numero}}</td>
@@ -70,7 +70,7 @@
         </tbody>
       </table>
     </div>
-    <input type="hidden" name="id"  id="id" [(ngModel)]="user.id" #id="ngModel">
+    <input type="hidden" name="id"  id="id" [(ngModel)]="pessoa.id" #id="ngModel">
     <button class="btn btn-primary" [disabled]="!form.valid">Atualizar</button>
   </form>
 </div>

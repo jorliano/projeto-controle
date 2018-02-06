@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ProviderService } from '../service/provider.service';
+import { PessoaService } from '../service/pessoa.service';
 import { Router } from '@angular/router'
 import { AlertService } from '../service/alert.service';
 import { NgForm } from '@angular/forms';
 
-
 @Component({
   selector: 'app-create-server',
-  templateUrl: './create-server.component.html',
-  styleUrls: ['./create-server.component.css']
+  templateUrl: './cadastro-pessoa.component.html',
+  styleUrls: ['./cadastro-pessoa.component.css']
 })
-export class CreateServerComponent implements OnInit {
+export class CadastroPessoaComponent implements OnInit {
 
   telefones = [];
 
-  constructor(private router: Router, private providerService: ProviderService, private alert: AlertService) { }
+  constructor(private router: Router, private pessoaService: PessoaService, private alert: AlertService) { }
 
   ngOnInit() { }
 
@@ -25,7 +24,7 @@ export class CreateServerComponent implements OnInit {
      let pessoa = {nome: form.value.nome, cpf: form.value.cpf, data_nascimento: form.value.data_nascimento,
                  email: form.value.email, telefones: this.telefones };
 
-     this.providerService.savePessoa(pessoa).subscribe(
+     this.pessoaService.savePessoa(pessoa).subscribe(
      res => {
              console.log(res);
              this.alert.success("Salvo com sucesso", true);
@@ -33,7 +32,7 @@ export class CreateServerComponent implements OnInit {
              },
      err => {
              console.log("occured error");
-             this.alert.error("Falha salvar dados", true);
+             this.alert.error("Falha ao  salvar dados", true);
            }
      )
    }else{

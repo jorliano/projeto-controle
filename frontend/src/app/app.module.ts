@@ -8,12 +8,11 @@ import { NgxMaskModule } from 'ngx-mask'
 
 
 import { AppComponent } from './app.component';
-import { ServerComponent } from './server/server.component';
-import { CreateServerComponent } from './create-server/create-server.component';
-import { UpdateServerComponent } from './update-server/update-server.component';
-import { ProviderService } from './service/provider.service'
-
+import { PessoaComponent } from './pessoa/pessoa.component';
+import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
+import { EditarPessoaComponent } from './editar-pessoa/editar-pessoa.component';
 import { AlertService } from './service/alert.service';
+import { PessoaService } from './service/pessoa.service';
 import { AlertComponent } from './alert/alert.component';
 import { DataIdadePipe } from './data-idade.pipe'
 
@@ -22,9 +21,9 @@ import { DataIdadePipe } from './data-idade.pipe'
 @NgModule({
   declarations: [
     AppComponent,
-    ServerComponent,
-    CreateServerComponent,
-    UpdateServerComponent,
+    PessoaComponent,
+    CadastroPessoaComponent,
+    EditarPessoaComponent,
     AlertComponent,
     DataIdadePipe,
   ],
@@ -34,15 +33,15 @@ import { DataIdadePipe } from './data-idade.pipe'
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: "", component: ServerComponent},
-      {path: "cadastro", component: CreateServerComponent},
-      {path: "update/:id", component: UpdateServerComponent}
+      {path: "", component: PessoaComponent},
+      {path: "cadastro", component: CadastroPessoaComponent},
+      {path: "update/:id", component: EditarPessoaComponent}
     ]),
     NgxMaskModule.forRoot(),
   ],
   providers: [
-    ProviderService,
     AlertService,
+    PessoaService,
   ],
   bootstrap: [AppComponent],
 })

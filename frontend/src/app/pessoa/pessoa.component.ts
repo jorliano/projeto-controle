@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ProviderService } from '../service/provider.service';
+import { PessoaService } from '../service/pessoa.service';
 import { AlertService } from '../service/alert.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-server',
-  templateUrl: './server.component.html',
-  styleUrls: ['./server.component.css']
+  templateUrl: './pessoa.component.html',
+  styleUrls: ['./pessoa.component.css']
 })
-export class ServerComponent implements OnInit {
+export class PessoaComponent implements OnInit {
 
   users = [];
   user = {};
 
-  constructor( private providerService: ProviderService, private alert: AlertService) { }
+  constructor( private pessoaService: PessoaService, private alert: AlertService) { }
 
   getUsers(){
-    this.providerService.getPessoas().subscribe(
+    this.pessoaService.getPessoas().subscribe(
       res => {
         console.log(res);
         this.users = res;
@@ -32,7 +32,7 @@ export class ServerComponent implements OnInit {
   }
 
   delteUser(user){
-    this.providerService.deletePessoa(user.id).subscribe(
+    this.pessoaService.deletePessoa(user.id).subscribe(
       res => {
         this.getUsers();
       },
@@ -47,13 +47,13 @@ export class ServerComponent implements OnInit {
     console.log(form.value);
    if(form.value.nome != ""){
      console.log("pesquisar por nome");
-       this.providerService.getPessoaPorNome(form.value.nome).subscribe(
+       this.pessoaService.getPessoaPorNome(form.value.nome).subscribe(
        res => { this.user = res; console.log(res);},
        err => {  console.log("Error occured");}
      )
      }else{
         console.log("pesquisar por cpf");
-       this.providerService.getPessoaPorCpf(form.value.cpf).subscribe(
+       this.pessoaService.getPessoaPorCpf(form.value.cpf).subscribe(
          res => {this.user = res; },
          err => { console.log("Error occured");}
        )
