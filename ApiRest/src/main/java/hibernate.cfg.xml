@@ -13,7 +13,7 @@
   <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
   
  
-  <mapping class="br.com.jortec.model.Pessoa"/>
-  <mapping class="br.com.jortec.model.Telefone"/>
+  <mapping class="br.com.company.model.Pessoa"/>
+  <mapping class="br.com.company.model.Telefone"/>
  </session-factory>
 </hibernate-configuration>
