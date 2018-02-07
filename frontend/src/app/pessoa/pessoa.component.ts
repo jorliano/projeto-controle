@@ -3,6 +3,7 @@ import { PessoaService } from '../service/pessoa.service';
 import { AlertService } from '../service/alert.service';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-server',
   templateUrl: './pessoa.component.html',
@@ -10,52 +11,53 @@ import { NgForm } from '@angular/forms';
 })
 export class PessoaComponent implements OnInit {
 
-  users = [];
-  user = {};
+  pessoas = [];
 
   constructor( private pessoaService: PessoaService, private alert: AlertService) { }
 
-  getUsers(){
+  ngOnInit() {
+      this.getPessoas();
+   }
+
+  getPessoas(){
     this.pessoaService.getPessoas().subscribe(
       res => {
         console.log(res);
-        this.users = res;
-        console.log(this.users);
+        this.pessoas = res;
       },
       err => {
-          console.log("Error occured");
+          this.alert.error("Erro ao carregar dados ", true);
       })
   }
 
-  ngOnInit() {
-    this.getUsers();
-  }
 
-  delteUser(user){
-    this.pessoaService.deletePessoa(user.id).subscribe(
-      res => {
-        this.getUsers();
-      },
-      err => {
-        console.log("Error occured");
-      }
-    )
+  deletarPessoa(id){
+    if(confirm("Você tem certeza")){
+      this.pessoaService.deletePessoa(id).subscribe(
+        res => {
+          this.alert.success("Delete com sucesso "+res);
+          this.getPessoas();
+        },
+        err => {
+          this.alert.error("Erro ao deletar ", true);
+        }
+      )
+    }
   }
-
 
   pesquisar(form: NgForm){
     console.log(form.value);
    if(form.value.nome != ""){
      console.log("pesquisar por nome");
        this.pessoaService.getPessoaPorNome(form.value.nome).subscribe(
-       res => { this.user = res; console.log(res);},
-       err => {  console.log("Error occured");}
+       res => { this.pessoas = res; console.log(res);},
+       err => { this.alert.error("Pesquisa não encontrada", true);}
      )
      }else{
         console.log("pesquisar por cpf");
        this.pessoaService.getPessoaPorCpf(form.value.cpf).subscribe(
-         res => {this.user = res; },
-         err => { console.log("Error occured");}
+         res => { this.pessoas = res; },
+         err => { this.alert.error("Pesquisa não encontrada", true);}
        )
      }
   }

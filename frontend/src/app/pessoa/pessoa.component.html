@@ -34,30 +34,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let user of users">
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.nome}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.cpf}}</td>
-          <td>{{user.dataNascimento | dataIdade }} anos</td>
-          <td>{{user.telefones.length}}</td>
-          <td><a type="button"  routerLink="/update/{{user.id}}" class="btn btn-primary">Editar</a></td>
-          <!--td><a  type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger" (click) = "delteUser(user.id)" >Deletar</a></td-->
-          <td><a   data-toggle="modal" data-target="#myModal" class="btn btn-danger" >Modal</a></td>
+        <tr *ngFor = "let pessoa of pessoas">
+          <th scope="row">{{pessoa.id}}</th>
+          <td>{{pessoa.nome}}</td>
+          <td>{{pessoa.email}}</td>
+          <td>{{pessoa.cpf}}</td>
+          <td>{{pessoa.dataNascimento | dataIdade }} anos</td>
+          <td>{{pessoa.telefones.length}}</td>
+          <td><a type="button"  routerLink="/update/{{pessoa.id}}" class="btn btn-primary">Editar</a></td>
+          <td><a  ype="button"  class="btn btn-danger" (click) = "deletarPessoa(pessoa.id)" >Deletar</a></td>
+
         </tr>
       </tbody>
     </table>
    </div>
-</div>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-
-    </div>
-
-  </div>
 </div>

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class PessoaService {
 
-      url ="http://localhost:8080/ApiRest/pessoa/";
+      url ="http://localhost:8080/ApiRest/pessoa/";      
 
       constructor(public http: HttpClient) { }
 
@@ -29,7 +29,7 @@ export class PessoaService {
       };
 
       savePessoa = function(pessoa){
-        return this.http.post(this.url + "cadastar" , pessoa);
+        return this.http.post(this.url + "cadastar", pessoa);
       };
 
       updatePessoa = function(pessoa){

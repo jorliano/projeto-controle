@@ -18,6 +18,9 @@ export class AlertComponent implements OnInit {
         //console.log("Recebendo requisicao "+res.show+"  "+ res.message);
         this.objAlert = res;
         this.objAlert.type = this.definindoAlert(this.objAlert);
+        setTimeout(() => {
+          this.objAlert.show = false;
+        },5000);
      }, (error) => {
          console.log(error);
      })

@@ -16,7 +16,7 @@
       <div class="form-group col-6">
         <label for="cpf">CPF</label>
         <input type="text" name="cpf" class="form-control is-valid " id="cpf" ngModel
-        required #cpf="ngModel"  mask='000.000.000-00'
+        required #cpf="ngModel"  mask='999.999.999-99'
         [ngClass]="{ 'is-invalid': cpf.touched && cpf.value.length < 11  }">
         <div class="invalid-feedback">Campo requirido</div>
       </div>
@@ -30,7 +30,7 @@
       <div class="form-group col-6">
         <label for="data_nascimento">Data de nascimento</label>
         <input type="date" name="data_nascimento" class="form-control is-valid " id="data_nascimento" ngModel
-        required #data_nascimento="ngModel" 
+        required #data_nascimento="ngModel"
         [ngClass]="{ 'is-invalid': data_nascimento.invalid && data_nascimento.dirty }">
         <div class="invalid-feedback">Campo requirido</div>
       </div>
