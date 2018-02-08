@@ -25,13 +25,13 @@ public class PessoaRest {
 	Gson g = new Gson();
 	
 	
-	@RequestMapping(value = "listar", method = RequestMethod.GET, headers="Accept=application/json;charset=utf-8;Access-Control-Allow-Headers")
+	@RequestMapping(value = "listar", method = RequestMethod.GET, headers="Accept=application/json;charset=utf-8;")
 	public List<Pessoa> listarPessoa() {
 		logger.info("Metodo listar pessoas chamado ");
 		return dao.getPessoas();
 	}		
 	
-	@RequestMapping(value = "/cadastar", method = RequestMethod.POST, headers="Accept=application/json;charset=utf-8;Access-Control-Allow-Headers")
+	@RequestMapping(value = "/cadastar", method = RequestMethod.POST, headers="Accept=application/json;charset=utf-8;Access-Control-Allow-Headers;")
 	public String cadastar(@RequestParam(value = "cadastar") String dados) {
 		
 		logger.info("metodo cadastar pessoa chamado" + dados);		
@@ -83,7 +83,7 @@ public class PessoaRest {
 	public Pessoa pesquisarPorCpf(@PathVariable(value = "cpf") String cpf) 
 	{
 		logger.info("Metodo pesquisar por cpf chamado cpf: "+cpf);			
-		return dao.buscarPorNome(cpf);
+		return dao.buscarPorCpf(cpf);
 	}
 	
 	@RequestMapping(value = "/pesquisar_id/{id}", method = RequestMethod.GET, headers="Accept=application/json;charset=utf-8")

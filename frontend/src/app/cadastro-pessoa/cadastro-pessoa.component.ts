@@ -22,8 +22,9 @@ export class CadastroPessoaComponent implements OnInit {
    if(form.valid){
 
      let pessoa = {nome: form.value.nome, cpf: form.value.cpf, data_nascimento: form.value.data_nascimento,
-                 email: form.value.email, telefones: this.telefones };
+                    email: form.value.email, telefones: this.telefones };
 
+     console.log(pessoa);
      this.pessoaService.savePessoa(pessoa).subscribe(
      res => {
              console.log(res);
@@ -41,8 +42,7 @@ export class CadastroPessoaComponent implements OnInit {
   }
 
   addFone(form: NgForm){
-    let id =  this.telefones.length == 0 ? 1 : this.telefones[this.telefones.length - 1].id + 1;
-    this.telefones.push({id: id, ddd: form.value.ddd, descricao: form.value.telefone});
+    this.telefones.push({ddd: form.value.ddd, numero: form.value.telefone});
     console.log(this.telefones);
   }
 

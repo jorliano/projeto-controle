@@ -17,12 +17,12 @@ export class PessoaComponent implements OnInit {
 
   ngOnInit() {
       this.getPessoas();
+
    }
 
   getPessoas(){
     this.pessoaService.getPessoas().subscribe(
       res => {
-        console.log(res);
         this.pessoas = res;
       },
       err => {
@@ -39,7 +39,7 @@ export class PessoaComponent implements OnInit {
           this.getPessoas();
         },
         err => {
-          this.alert.error("Erro ao deletar ", true);
+          this.alert.error("Erro ao deletar "+err, true);
         }
       )
     }
@@ -50,13 +50,27 @@ export class PessoaComponent implements OnInit {
    if(form.value.nome != ""){
      console.log("pesquisar por nome");
        this.pessoaService.getPessoaPorNome(form.value.nome).subscribe(
-       res => { this.pessoas = res; console.log(res);},
+       res => {
+          if(res != null ){
+            this.pessoas = [];
+            this.pessoas.push(res);
+          }else{
+            this.alert.error("Pesquisa não encontrada", true);
+          }
+       },
        err => { this.alert.error("Pesquisa não encontrada", true);}
      )
      }else{
         console.log("pesquisar por cpf");
        this.pessoaService.getPessoaPorCpf(form.value.cpf).subscribe(
-         res => { this.pessoas = res; },
+         res => {
+            if(res != null ){
+              this.pessoas = [];
+              this.pessoas.push(res);
+            }else{
+              this.alert.error("Pesquisa não encontrada", true);
+            }
+         },
          err => { this.alert.error("Pesquisa não encontrada", true);}
        )
      }

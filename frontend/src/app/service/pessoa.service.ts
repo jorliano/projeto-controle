@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class PessoaService {
 
-      url ="http://localhost:8080/ApiRest/pessoa/";      
+      url ="http://localhost:8080/ApiRest/pessoa/";
 
       constructor(public http: HttpClient) { }
 

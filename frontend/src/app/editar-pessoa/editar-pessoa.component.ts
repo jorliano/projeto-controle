@@ -43,12 +43,13 @@ export class EditarPessoaComponent implements OnInit {
 
     updatepessoa(form: NgForm) {
 
-      console.log(form.value);
+
       if(form.valid){
 
        let pessoa = {id: form.value.id, nome: form.value.nome, cpf: form.value.cpf, data_nascimento: form.value.data_nascimento,
                       email: form.value.email, telefones: this.pessoa.telefones };
 
+       console.log(pessoa);
        this.pessoaService.updatePessoa(pessoa).subscribe(
          res => {
                  console.log(res);
@@ -65,9 +66,8 @@ export class EditarPessoaComponent implements OnInit {
      }
     }
 
-    addFone(form: NgForm){
-      let id =  this.pessoa.telefones.length == 0 ? 1 : this.pessoa.telefones[this.pessoa.telefones.length - 1].id + 1;
-      let telefone = {id: id, ddd: form.value.ddd, descricao: form.value.telefone};
+    addFone(form: NgForm){      
+      let telefone = {ddd: form.value.ddd, numero: form.value.telefone};
       this.pessoa.telefones.push(telefone);
       console.log(this.pessoa.telefones);
     }
