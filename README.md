@@ -32,7 +32,7 @@ Rode Maven Install
 
 Configuração ApiRest
 
-abra o arquivo src/main/java/br/com/company/util/hibernate.cfg.xml
+abra o arquivo src/main/java/hibernate.cfg.xml
 nesse arquivo você configura a conexão com o banco de dados
 apos configurar os dados para a conexão com o banco crie uma database
 com o nome que você especificou.
