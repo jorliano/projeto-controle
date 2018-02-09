@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class EditarPessoaComponent implements OnInit {
 
 
-    pessoa = { telefones: [{id: 0}]};
+    pessoa = { telefones: [{}]};
 
 
     constructor(private router: Router, private route: ActivatedRoute, private pessoaService: PessoaService, private alert: AlertService ) { }
@@ -66,8 +66,8 @@ export class EditarPessoaComponent implements OnInit {
      }
     }
 
-    addFone(form: NgForm){      
-      let telefone = {ddd: form.value.ddd, numero: form.value.telefone};
+    addFone(form: NgForm){
+      let telefone = { ddd: form.value.ddd, numero: form.value.telefone};
       this.pessoa.telefones.push(telefone);
       console.log(this.pessoa.telefones);
     }

@@ -8,10 +8,6 @@ export class PessoaService {
 
       constructor(public http: HttpClient) { }
 
-      getConsole = function(){
-        console.log("it was called")
-      }
-
       getPessoas = function(){
         return this.http.get(this.url + "listar");
       };

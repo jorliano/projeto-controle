@@ -6,7 +6,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
 
-
 import { AppComponent } from './app.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
 import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.component';
@@ -15,9 +14,7 @@ import { AlertService } from './service/alert.service';
 import { PessoaService } from './service/pessoa.service';
 import { AlertComponent } from './alert/alert.component';
 import { DataIdadePipe } from './data-idade.pipe';
-import { FormatFonePipe } from './format-fone.pipe'
-
-
+import { FormatFonePipe } from './format-fone.pipe';
 
 @NgModule({
   declarations: [

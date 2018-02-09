@@ -17,7 +17,6 @@ export class PessoaComponent implements OnInit {
 
   ngOnInit() {
       this.getPessoas();
-
    }
 
   getPessoas(){
@@ -35,7 +34,7 @@ export class PessoaComponent implements OnInit {
     if(confirm("Você tem certeza")){
       this.pessoaService.deletePessoa(id).subscribe(
         res => {
-          this.alert.success("Delete com sucesso "+res);
+          this.alert.success("Delete com sucesso ");
           this.getPessoas();
         },
         err => {

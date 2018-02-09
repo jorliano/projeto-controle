@@ -15,7 +15,6 @@ export class AlertComponent implements OnInit {
     console.log(this.objAlert);
     this.alertService.getAlert().subscribe(
       (res: AlertMessage) => {
-        //console.log("Recebendo requisicao "+res.show+"  "+ res.message);
         this.objAlert = res;
         this.objAlert.type = this.definindoAlert(this.objAlert);
         setTimeout(() => {

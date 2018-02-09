@@ -21,18 +21,16 @@ export class CadastroPessoaComponent implements OnInit {
 
    if(form.valid){
 
-     let pessoa = {nome: form.value.nome, cpf: form.value.cpf, data_nascimento: form.value.data_nascimento,
+     let pessoa = {nome: form.value.nome, cpf: form.value.cpf, dataNascimento: form.value.data_nascimento,
                     email: form.value.email, telefones: this.telefones };
 
      console.log(pessoa);
      this.pessoaService.savePessoa(pessoa).subscribe(
      res => {
-             console.log(res);
              this.alert.success("Salvo com sucesso", true);
              this.router.navigate([""]);
              },
-     err => {
-             console.log("occured error");
+     err => {             
              this.alert.error("Falha ao  salvar dados", true);
            }
      )
